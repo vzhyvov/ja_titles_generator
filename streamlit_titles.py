@@ -15,7 +15,7 @@ _max_length = col_1.number_input("Title max number of words", value=_max_length)
 text = st.text_area('Text Input', text1)
 
 def run_model(input_text):
-    #device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     model = pipeline("summarization", model="google/pegasus-xsum", max_length=_max_length)
     input_text = str(input_text)
     output = model(input_text)[0]['summary_text']
